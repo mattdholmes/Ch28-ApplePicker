@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Basket : MonoBehaviour
 {
+    public GUIText scoreGT;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        GameObject scoreGo = GameObject.Find("ScoreCounter");
+        scoreGT = scoreGo.GetComponent<GUIText>();
+        scoreGT.text = "0";
     }
 
     // Update is called once per frame
@@ -27,5 +31,9 @@ public class Basket : MonoBehaviour
         {
             Destroy(collidedWith);
         }
+        int score = int.Parse(scoreGT.text);
+        score += 100;
+        scoreGT.text = score.ToString();
+
     }
 }
